@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="templatemo">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <title>威秀影城訂票系統 - 場次資訊</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/fontawesome.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/templatemo-liberty-market.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/owl.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/animate.css')}}">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/section.css')}}">
+
+  <style>
+    #more1 {display: none;}
+    #more2 {display: none;}
+    #more3 {display: none;}
+    #more4 {display: none;}
+    #more5 {display: none;}
+    #more6 {display: none;}
+    #more7 {display: none;}
+  </style>
+</head>
+
+<body>
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="{{url_for('home')}}" class="logo">
+                      <img src="{{url_for('static', filename='assets/images/new_logo.png')}}" alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li><a href="{{url_for('home')}}">首頁</a></li>
+                      <li><a href="{{url_for('explore')}}" class="active">訂購票卷</a></li>
+                      <li><a href="{{url_for('details')}}">會員專區</a></li>
+                      <li><a href="{{url_for('create')}}">會員註冊登入</a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="page-heading normal-space">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h6>-VIESHOW CINEMA-</h6>
+          <h2>威秀影城場次/座位查詢系統</h2>
+          <span>威秀影城訂票系統 > <a href="{{url_for('home')}}">首頁</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="author-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="author">
+            <h3><br><br><br>{{cinema[0][1]}} <br> <a href="#">{{cinema[0][4]}}</a></h3>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="{{url_for('static', filename='assets/images/'+cinema[0][3])}}" alt="" style="text-align:right"> 
+        </div>
+        <div class="col-lg-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h4>影城介紹</h4>
+            <br><h6>{{cinema[0][2]}}</h6>
+          </div>
+        </div>
+
+        <h2>場次資訊</h2>
+        <p>全省威秀影城隔週電影新場次公布於每週三中午12:00~下午18:00，會開放未來一週(即當週的星期五至下週星期四為止)</p>
+
+        <div class="tab">
+          {% for mov in movies %}
+          <button class="tablinks" onclick="openCity(event, '{{mov}}')">{{mov}}</button>
+          {% endfor %}
+        </div>
+
+        <div id="myOverlay" class="overlay">
+          <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+          <div class="overlay-content">
+            <form class="modal-content">
+              <div class="imgcontainer">
+                <img src="{{url_for('static', filename='assets/images/座位圖.png')}}" >
+              </div>
+            </form>
+          </div>
+        </div>
+
+        {% set index = namespace(value=0) %}
+        {% for date in movies %}
+        <div id={{date}} class="tabcontent">
+          {% for movie in movies[date] %}
+          {% set index.value = index.value + 1 %}
+          <p><h3>{{movie[0]}}</h3><span id="dots{{index.value}}"> </span>
+            <span style="display:none;" id="more{{index.value}}">
+              <p>{{movie[1]}}</p>
+              {% for m in movies[date][movie] %}
+              <button class="btn movietime" onclick="document.getElementById('id01').style.display='block'">{{m[3]}}</button>
+              {% endfor %}
+              <button class="openBtn" onclick="openSearch()">座位表示意圖</button>
+            </span></p>
+            <button class="morebtn" onclick="more_info()" id="myBtn{{index.value}}">查看場次</button>
+          {% endfor %}
+        </div>
+        {% endfor %}
+
+        <div id="id01" class="modal">
+          <form class="modal-content animate" action="/action_page.php" method="post">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            </div>
+            <div class="container" style="background-color:#f1f1f1">
+              <div class="word">
+                <br><b>電影名稱：阿凡達2<br>場次：數位 12:00</b><br>
+                <br><b>剩餘位置：</b><br>
+                <b>A排：  </b><b>1、2、3、5、7、8號</b><br>
+                <b>B排：  </b><b>1、2、4、5、7、8號</b><br>
+                <b>C排：  </b><b>1、2、3、4、5、6、7、8號</b><br>
+                <b>D排：  </b><b>1、2、3、4、5、6、7、8號</b><br>
+                <b>E排：  </b><b>1、2、3、4、5、6、7、8號</b><br>
+                <b>F排：  </b><b>1、2、3、4、5、6、7、8號</b><br>
+                <br>
+                <img src="{{url_for('static', filename='assets/images/座位圖.png')}}" class="remaining_seat">
+              </div>
+              </label>
+                <button type="button" style="text-align: right" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">離開</button><br><br>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2022 <a href="#">威秀影城</a> CGUAI軟體工程 ,  All rights reserved.
+          &nbsp;&nbsp;
+          Designed by <a title="HTML CSS Templates" rel="sponsored" href="https://templatemo.com" target="_blank">CGUAI</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/isotope.min.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/owl-carousel.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/tabs.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/popup.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/custom.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/section.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="templatemo">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <title>威秀影城訂票系統 - 會員登入專區</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='assets/css/fontawesome.css')}}">
+  <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='assets/css/templatemo-liberty-market.css')}}">
+  <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='assets/css/owl.css')}}">
+  <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='assets/css/animate.css')}}">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+</head>
+
+<script type="text/javascript">
+  function display_alert(){
+    let message = "{{message}}";
+    if (message != "False"){
+      alert(message);
+    }
+  }
+</script>
+
+<body onload="display_alert();">
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="home.html" class="logo">
+                      <img src="{{url_for('static', filename='assets/images/new_logo.png')}}"  alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li><a href="{{url_for('home')}}">首頁</a></li>
+                      <li><a href="{{url_for('explore')}}">訂購票卷</a></li>
+                      <li><a href="{{url_for('details')}}">會員專區</a></li>
+                      <li><a href="{{url_for('create')}}" class="active">會員註冊登入</a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="page-heading normal-space">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h4>WELCOME VIESHOW</h4>
+          <h2>網路會員登入</h2>
+          <span>Home > <a href="#">會員登入</a></span>
+          <div class="buttons">
+            <div class="main-button">
+              <a href="{{url_for('create')}}">會員登入</a>
+            </div>
+            <div class="border-button">
+              <a href="{{url_for('register')}}">會員註冊</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="item-details-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h2>會員登入</h2>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <form id="contact" action="/check_login" method="post">
+            <div class="row">
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="mail">帳號(信箱)</label>
+                  <input type="mail" name="mail" id="mail" placeholder="Ex. apple@gmail.com" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-8">
+                <fieldset>
+                  <label for="password">密碼</label>
+                  <input type="password" name="password" id="password" placeholder="**********" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="orange-button">登入</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="main-button">          
+          <a href="{{url_for('forget_password')}}">忘記密碼</a>
+        </div>
+      </div>
+        <div class="col-lg-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h2>熱門<em>電影</em>推薦</h2>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="left-image">
+            <img src="{{url_for('static', filename='assets/images/create-yours.jpg')}}" alt="" style="border-radius: 20px;">
+          </div>
+        </div>
+        <div class="col-lg-5 align-self-center">
+          <h4>明日邊界</h4>
+          <span class="author">
+            <img src="{{url_for('static', filename='assets/images/author-02.jpg')}}" alt="" style="max-width: 50px; border-radius: 50%;">
+            <h6>Kataleya Smithee<br><a href="#">@kataleey</a></h6>
+          </span>
+          <p>真的出乎我意料，它算是該有的都有了：調性掌握得很好，劇本聰明且幽默，也有足夠的情感重量與生死思考，娛樂性很高</p>
+          <div class="row">
+            <div class="col-3">
+              <span class="bid">
+                評分<br><strong>9.6</strong><br>
+              </span>
+            </div>
+            <div class="col-4">
+              <span class="owner">
+                上映時間<br><strong>2022/02/02</strong><br>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2022 <a href="#">威秀影城</a> CGUAI軟體工程 ,  All rights reserved.
+          &nbsp;&nbsp;
+          Designed by <a title="HTML CSS Templates" rel="sponsored" href="https://templatemo.com" target="_blank">CGUAI</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/isotope.min.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/owl-carousel.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/tabs.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/popup.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/custom.js')}}"></script>
+  </body>
+</html>

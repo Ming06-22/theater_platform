@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="templatemo">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <title>威秀影城訂票系統 - 訂購票卷專區</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}">
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='assets/css/fontawesome.css')}}">
+  <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='assets/css/templatemo-liberty-market.css')}}">
+  <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='assets/css/owl.css')}}">
+  <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='assets/css/animate.css')}}">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+</head>
+
+<body>
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="{{url_for('home')}}" class="logo">
+                      <img src="{{url_for('static', filename='assets/images/new_logo.png')}}" alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li><a href="{{url_for('home')}}">首頁</a></li>
+                      <li><a href="{{url_for('explore')}}" class="active">訂購票卷</a></li>
+                      <li><a href="{{url_for('details')}}">會員專區</a></li>
+                      <li><a href="{{url_for('create')}}">會員註冊登入</a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h6>-VIESHOW TICKET-</h6>
+          <h2>歡迎來到威秀影城訂票系統</h2>
+          <span>威秀影城訂票系統 > <a href="#">訂購票卷</a></span><br><br>
+        </div>
+      </div>
+    </div>
+    <div class="featured-explore">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="owl-features owl-carousel">
+              {% for i in range(length) %}
+              <div class="item">
+                <div class="thumb">
+                  <img src="{{url_for('static', filename='assets/images/' + movies[i][11])}}" alt="" style="border-radius: 20px;">
+                  <div class="hover-effect">
+                    <div class="content">
+                      <h4>{{movies[i][1]}}</h4>
+                      <span class="author">
+                        <h6>現正熱映中！<br><a href="#">@{{movies[i][4]}}</a></h6>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="discover-items">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h2>請在此訂購您所需的 <em>票卷</em>.</h2>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <!-- <form id="search-form" name="gs" method="submit" role="search" action="#">
+            <div class="row">
+              <div class="col-lg-6">
+                <fieldset>
+                    <input type="text" name="keyword" class="searchText" placeholder="Type Something..." autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-4">
+                <fieldset>
+                    <select name="Price" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
+                        <option selected>上映時間</option>
+                        <option value="Ending-Soon">現正熱映</option>
+                        <option value="Coming-Soon">即將上映</option>
+                    </select>
+                </fieldset>
+              </div>
+              <div class="col-lg-2">                      
+                <fieldset>
+                    <button class="main-button">搜尋</button>
+                </fieldset>
+              </div>
+            </div>
+          </form> -->
+        </div>
+        {% for i in range(length) %}
+        <div class="col-lg-3">
+          <div class="item">
+            <div class="row">
+              <div class="col-lg-12">
+                <span class="author">
+                  <img src="" alt="" style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                </span>
+                <img src="{{url_for('static', filename='assets/images/' + movies[i][11])}}" alt="" >
+                <h4>{{movies[i][1]}}<br>{{movies[i][2]}}</h4>
+              </div>
+              <div class="col-lg-12">
+                <div class="line-dec"></div>
+                <div class="row">
+                  <div class="col-6">
+                    <span>上映日期: <br> <strong>{{movies[i][4]}}</strong></span>
+                  </div>
+                  <div class="col-6">
+                    <span>影廳類型: <br> <strong>{{movies[i][6]}}</strong></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="main-button">
+                  <a href="{{url_for('movie_info', name_ch=movies[i][1], name_en=movies[i][2], mv_on=movies[i][4], director=movies[i][7], actor=movies[i][8], type=movies[i][6], long=movies[i][3], intro=movies[i][10], image=movies[i][11], trailer=movies[i][12])}}">View Details</a>
+                  <a href="{{url_for('ticket')}}">馬上訂購</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2022 <a href="#">威秀影城</a> CGUAI軟體工程 ,  All rights reserved.
+          &nbsp;&nbsp;
+          Designed by <a title="HTML CSS Templates" rel="sponsored" href="https://templatemo.com" target="_blank">CGUAI</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/isotope.min.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/owl-carousel.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/tabs.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/popup.js')}}"></script>
+  <script src="{{url_for('static', filename='assets/js/custom.js')}}"></script>
+</body>
+</html>
