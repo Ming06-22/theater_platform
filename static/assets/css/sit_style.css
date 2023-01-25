@@ -1,0 +1,142 @@
+body{
+    background-color: #1e1e1e;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+
+}
+.movie-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: auto;
+    margin: 100px auto 0 auto;
+    
+}
+.movie-container label{
+    color: white;
+    font-size: 18px;
+    margin-right: 5px;
+}
+#movie{
+    padding: 5px;
+    border-radius: 5px;
+    width: 200px;
+}
+#movie option{
+    padding: 5px;
+}
+.showcase{
+    background-color:olive;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 300px;
+    margin: 30px auto;
+    padding: 5px 10px;
+
+    
+}
+.showcase li{
+    color:lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+
+}
+.seat{
+    background-color:darkgrey;
+    width: 15px;
+    height: 12px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    margin: 0px 3px;
+  
+}
+
+
+.seat-container{
+    perspective: 500px;
+}
+.screen{
+    margin:5px auto 20px auto;
+    width: 250px;
+    height: 60px;
+    transform:rotateX(-28deg);
+    background-color: snow;
+    box-shadow: 0 3px 10px rgba(250, 246, 246, 0.7); /*0.7是不透明度*/
+}
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+.ttqyk{
+    border:thistle 2px solid;
+    margin: 0 auto;
+    display:inline-flex;
+    padding: 10px;
+   
+}
+.seat1{
+    background-color:violet;
+    width: 15px;
+    height: 12px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    margin: 0px 3px;
+  
+}
+.seat.occupied{
+    background-color:floralwhite;
+}
+.seat.selected{
+    background-color:salmon;
+}
+.seat.seatshow{
+    background-color:salmon;
+
+}
+/*不行，只有链接a能用visited，
+*.seat:not(.occupied):visited{
+*   background-color:seagreen;
+}*/
+.seat:not(.occupied):hover{
+    background-color: salmon;
+    transform: scale(1.2);
+    cursor:pointer;
+}
+.seat:not(.occupied):active{
+    background-color: salmon;
+    cursor:pointer;
+}
+.seat:nth-last-of-type(2){
+    margin-left: 20px;
+}
+.seat:nth-last-of-type(6){
+    margin-left: 20px;
+}
+.text{
+    color: aliceblue;
+    font-size: 18px;
+    margin:5px auto;
+}
+#num{
+    color: salmon;
+    font-size: 18px;
+}
+#price{
+    color: salmon;
+    font-size: 18px;
+}
+
+
+

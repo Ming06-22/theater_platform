@@ -1,0 +1,177 @@
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 3px solid #7453fc;
+  background-color: #7453fc;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #C8B4F8;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #C8B4F8;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 3px solid #7453fc;
+  border-top: none;
+}
+/* movie time */
+.btn {
+  border: none;
+  background-color: inherit;
+  width:100px;
+	height: 50px;
+  padding: 14px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+
+.movietime {
+  color: #0a58ca;
+}
+
+.movietime:hover {
+  background-color: #0a58ca;
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.openBtn {
+  background: #7453fc;
+  border: none;
+  padding: 8px 8px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.openBtn:hover {
+  background: black;
+  color: #F96CBC;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+  position: relative;
+  top: 30%;
+  width: 60%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 60px;
+  right: 45px;
+  font-size: 50px;
+  cursor: pointer;
+  color: white;
+}
+
+.overlay .closebtn:hover {
+  color: #ccc;
+}
+
+.overlay button {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay button:hover {
+  background: #bbb;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  border: 1px solid #888;
+  /*width: 60%; /* Could be more or less, depending on screen size */
+}
+
+.imgcontainer {
+  text-align: center;
+  margin:0;
+  position: relative;
+}
+
+img.avatar {
+  width: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+.morebtn {
+  background: #7453fc;
+  border: none;
+  padding: 8px 8px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.cancelbtn {
+  font-size: 14px;
+  color: #fff;
+  background-color: #7453fc;
+  border: 1px solid #7453fc;
+  padding: 12px 30px;
+  display: inline-block;
+  border-radius: 25px;
+  font-weight: 500;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+}
+
+img.remaining_seat {
+  width: 50%;
+}
